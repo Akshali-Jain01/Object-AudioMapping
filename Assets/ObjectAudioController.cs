@@ -20,6 +20,11 @@ public class ObjectAudioController : MonoBehaviour
         // Initialize audio source
         audioSource = gameObject.AddComponent<AudioSource>();
         PlayNext();
+        else
+        {
+            // All objects have been processed, handle what happens next
+            HandleSequenceEnd();
+        }
     }
 
     void PlayNext()
@@ -41,7 +46,14 @@ public class ObjectAudioController : MonoBehaviour
             Invoke("OnAudioComplete", audioSource.clip.length);
         }
     }
+ void HandleSequenceEnd()
+    {
+        Debug.Log("All objects processed. Sequence complete!");
 
+       
+        objects[currentIndex - 1].SetActive(false);
+        Debug.Log("Game Over!");
+    }
     void OnAudioComplete()
     {
         currentIndex++;
