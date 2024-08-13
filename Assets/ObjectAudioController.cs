@@ -16,15 +16,16 @@ public class ObjectAudioController : MonoBehaviour
             Debug.LogError("Objects and AudioClips arrays must be of the same length!");
             return;
         }
-
-        // Initialize audio source
-        audioSource = gameObject.AddComponent<AudioSource>();
-        PlayNext();
-        else
+             else
         {
             // All objects have been processed, handle what happens next
             HandleSequenceEnd();
         }
+
+        // Initialize audio source
+        audioSource = gameObject.AddComponent<AudioSource>();
+        PlayNext();
+   
     }
 
     void PlayNext()
